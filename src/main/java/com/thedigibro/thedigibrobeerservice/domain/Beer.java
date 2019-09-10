@@ -1,4 +1,4 @@
-package com.thedigibro.thedigibrobeerservice.web.domain;
+package com.thedigibro.thedigibrobeerservice.domain;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
