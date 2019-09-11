@@ -2,6 +2,7 @@ package com.thedigibro.thedigibrobeerservice.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thedigibro.thedigibrobeerservice.web.model.BeerDto;
+import com.thedigibro.thedigibrobeerservice.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,7 +29,7 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        BeerDto beerDto= BeerDto.builder().build();
+        BeerDto beerDto= BeerDto.builder().id(UUID.randomUUID()).beerName("Moretti").beerStyle(BeerStyleEnum.PALE_ALE).upc(30111107L).build();
         String beerDtoJson=objectMapper.writeValueAsString(beerDto);
         mockMvc.perform(post("/api/v1/beer/")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -38,7 +39,7 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
-        BeerDto beerDto= BeerDto.builder().build();
+        BeerDto beerDto= BeerDto.builder().id(UUID.randomUUID()).beerName("Moretti").beerStyle(BeerStyleEnum.PALE_ALE).upc(30111107L).build();
         String beerDtoJson=objectMapper.writeValueAsString(beerDto);
         mockMvc.perform(put("/api/v1/beer/"+UUID.randomUUID().toString())
                 .contentType(MediaType.APPLICATION_JSON)
