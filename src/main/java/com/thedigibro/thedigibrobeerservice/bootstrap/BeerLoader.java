@@ -2,6 +2,7 @@ package com.thedigibro.thedigibrobeerservice.bootstrap;
 
 import com.thedigibro.thedigibrobeerservice.domain.Beer;
 import com.thedigibro.thedigibrobeerservice.repositories.BeerRepository;
+import com.thedigibro.thedigibrobeerservice.web.model.BeerStyleEnum;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,7 @@ public class BeerLoader implements CommandLineRunner {
         if(beerRepository.count()==0){
             beerRepository.save(Beer.builder()
                     .beerName("Mago Bobs")
-                    .beerStyle("IPA")
+                    .beerStyle(BeerStyleEnum.PALE_ALE)
                     .quantityToBrew(200)
                     .minOnHand(12)
                     .upc(377010000001L)
@@ -33,7 +34,7 @@ public class BeerLoader implements CommandLineRunner {
                     .build());
             beerRepository.save(Beer.builder()
                     .beerName("Moretti Baffo")
-                    .beerStyle("PALE_ALE")
+                    .beerStyle(BeerStyleEnum.ALE)
                     .quantityToBrew(200)
                     .minOnHand(12)
                     .upc(377010000002L)
