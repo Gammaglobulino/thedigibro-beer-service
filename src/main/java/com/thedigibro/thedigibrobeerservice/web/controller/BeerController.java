@@ -3,6 +3,7 @@ package com.thedigibro.thedigibrobeerservice.web.controller;
 import com.thedigibro.thedigibrobeerservice.web.model.BeerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -17,12 +18,12 @@ public class BeerController {
         return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto){
+    public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto){
         //todo implementing saving an obj
         return new ResponseEntity(HttpStatus.CREATED);
     }
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId")UUID beerId,@RequestBody BeerDto beerDto){
+    public ResponseEntity updateBeerById(@PathVariable("beerId")UUID beerId,@Validated @RequestBody BeerDto beerDto){
         //todo implementing update an object
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
